@@ -17,8 +17,10 @@ D:\git\cad97\win-ftype>test.py hi ma
 
 Necessarily reimplements the ["command line variables"](https://superuser.com/a/473602)
 used in defining file type associations, so behavior may differ from `ShellExecute` there.
-The most used placeholders of `%0`/`$1`/`%L` and `%*` should work fully properly.
-Everything else is best-effort of mostly undocumented functionality.
+The most used placeholders of `%0`/`$1`/`%L` and `%*` should mostly work properly.
+However, this implementation only does substitution for the *entire* argument; e.g.
+an argument of `/z"%1"` won't get substituted properly. Everything else is a best-effort
+implementation of mostly undocumented functionality.
 
 Additionally, this crate *does not* replicate the "functionality" of unquoted variables
 being expanded into potentially multiple command line arguments. This is primarily due
